@@ -1,5 +1,3 @@
-
-
 function initc(v)
 local t = {}
 local s,e = pcall(function ()
@@ -24,9 +22,16 @@ local gt = _G.ff5c2dc8d81d9b59
 return gt[p]
 end
 
+function comparec(p,v)
+local gt = _G.ff5c2dc8d81d9b59
+local val = gt[p]
+return (v == val)
+end
+
 
 return {
   initc = initc,
   cursor = cursor,
   getp = getp,
+  comparep = comparep
        }
