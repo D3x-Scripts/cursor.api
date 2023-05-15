@@ -1,4 +1,6 @@
-function initc(v)
+local cdotapi = {}
+
+function cdotapi.initc(v)
 local t = {}
 local s,e = pcall(function ()
 for i=1,string.len(v),1 do
@@ -13,25 +15,20 @@ return false
 end
 end
 
-function cursor()
+function cdotapi.cursor()
 return _G.ff5c2dc8d81d9b59
 end
 
-function getc(p)
+function cdotapi.getc(p)
 local gt = _G.ff5c2dc8d81d9b59
 return gt[p]
 end
 
-function comparec(p,v)
+function cdotapi.comparec(p,v)
 local gt = _G.ff5c2dc8d81d9b59
 local val = gt[p]
 return (v == val)
 end
 
 
-return {
-  initc = initc,
-  cursor = cursor,
-  getp = getp,
-  comparep = comparep
-       }
+return cdotapi
