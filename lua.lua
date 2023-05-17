@@ -2,7 +2,7 @@ local cdotapi = {}
 
 function cdotapi.initc(v)
 local t = {}
-local s,e = pcall(function ()
+local s,e = pcall(function()
 for i=1,string.len(v),1 do
 table.insert(t,string.sub(v,i,i))
 end
@@ -30,5 +30,12 @@ local val = gt[p]
 return (v == val)
 end
 
+function cdotapi.replacec(p,v)
+local s,e = pcall(function()
+local gt = _G.ff5c2dc8d81d9b59
+gt[p] = v
+end)
+return s
+end
 
 return cdotapi
