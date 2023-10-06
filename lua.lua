@@ -1,41 +1,35 @@
-local cdotapi = {}
+local module = {}
 
-function cdotapi.initc(v)
+function module.new(v)
+module.__index = module
 local t = {}
-local s,e = pcall(function()
 for i=1,string.len(v),1 do
 table.insert(t,string.sub(v,i,i))
 end
-_G.ff5c2dc8d81d9b59 = t
-end)
-if s then
-return true
-else
-return false
-end
+setmetatable(t,module)
+return t
 end
 
-function cdotapi.cursor()
-return _G.ff5c2dc8d81d9b59
+function module:getT()
+    s = ""
+   for i,v in pairs(self) do
+       s = s..v
+   end   
+return s
+end    
+
+function module:get(p)
+return self[p]
 end
 
-function cdotapi.getc(p)
-local gt = _G.ff5c2dc8d81d9b59
-return gt[p]
-end
-
-function cdotapi.comparec(p,v)
-local gt = _G.ff5c2dc8d81d9b59
-local val = gt[p]
+function module:compare(v,p)
+local val = self[p]
 return (v == val)
 end
 
-function cdotapi.replacec(p,v)
-local s,e = pcall(function()
-local gt = _G.ff5c2dc8d81d9b59
-gt[p] = v
-end)
-return s
+function module:replace(v,p)
+    self[v] = p
 end
 
-return cdotapi
+
+return module
